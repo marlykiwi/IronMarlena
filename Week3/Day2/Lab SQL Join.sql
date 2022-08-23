@@ -43,3 +43,12 @@ limit 10;
 /* Optional: Which is the most rented film? 
 The answer is Bucket Brotherhood
 This query might require using more than one join statement. Give it a try.*/
+
+select title, count(rental_id) from rental as r
+inner join inventory using (inventory_id)
+inner join film using (film_id)
+group by title
+order by count(rental_id) desc
+limit 1;
+
+group by name
