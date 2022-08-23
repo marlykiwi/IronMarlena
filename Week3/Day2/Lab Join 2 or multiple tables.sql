@@ -54,3 +54,14 @@ inner join rental as r using (inventory_id)
 where title = "ACADEMY DINOSAUR" and store_id=1
 # It was returned, hence it is available for rent
 order by rental_date desc;
+
+# Another safer approach to finding out whether the film is available, is checking whether it was not returned.
+select * from rental as r
+inner join inventory as inv using (inventory_id)
+inner join film as f using (film_id)
+where title = "ACADEMY DINOSAUR"
+order by return_date, title;
+
+select * from inventory;
+
+select * from rental;
